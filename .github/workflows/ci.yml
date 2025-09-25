@@ -57,23 +57,6 @@ jobs:
           path: coverage/
           retention-days: 30
 
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v6.0.0
-        env:
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            -Dsonar.projectKey=sample-node-app-saurabh
-            -Dsonar.organization=sda
-            -Dsonar.token=${{ secrets.SONAR_TOKEN }}
-            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
-            -Dsonar.sources=.
-            -Dsonar.exclusions=node_modules/**,coverage/**,tests/**,**/*.test.js,**/*.spec.js
-            -Dsonar.tests=tests/
-            -Dsonar.test.inclusions=**/*.test.js,**/*.spec.js
-            -Dsonar.coverage.exclusions=node_modules/**,coverage/**,tests/**,**/*.test.js,**/*.spec.js
-
       - name: Create deployment package
         run: |
           set -euo pipefail
