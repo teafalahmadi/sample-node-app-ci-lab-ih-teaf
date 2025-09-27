@@ -49,7 +49,7 @@ jobs:
      - name: Build (optional)
        run: npm run build 2>/dev/null || echo "No build step; continuing."
 
-     - name: Azure login (client secret)
+     - name: Azure login
        uses: azure/login@v2
        with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
