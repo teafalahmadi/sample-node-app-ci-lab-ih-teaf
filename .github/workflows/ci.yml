@@ -83,7 +83,7 @@ jobs:
           (cd "$GITHUB_WORKSPACE" && zip -r "$ZIP_NAME" deployment-package)
           echo "ZIP_NAME=$ZIP_NAME" >> "$GITHUB_ENV"
 
-      - name: Azure login (client secret)
+      - name: Azure login
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
