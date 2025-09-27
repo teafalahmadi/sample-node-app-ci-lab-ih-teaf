@@ -26,6 +26,13 @@ jobs:
      - name: Checkout code
        uses: actions/checkout@v4
 
+     - name: Force Az.Accounts module to v2.19.0
+       shell: pwsh
+       run: |
+          Install-Module -Name Az.Accounts -RequiredVersion 2.19.0 -Force -AllowClobber -Scope CurrentUser
+          Import-Module Az.Accounts -RequiredVersion 2.19.0
+
+
      - name: Setup Node.js
        uses: actions/setup-node@v4
        with:
