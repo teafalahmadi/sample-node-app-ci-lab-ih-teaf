@@ -14,8 +14,8 @@ permissions:
 env:
  APP_PORT: 3000
  IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/frontendapp-node
- AZURE_RESOURCE_GROUP: web-labs-rg-saurabh
- AZURE_WEBAPP_NAME: frontendapp-web-saurabh
+ AZURE_RESOURCE_GROUP: teaf4
+ AZURE_WEBAPP_NAME: frontendapp-teaf-web
 
 jobs:
  build-test-and-deploy:
