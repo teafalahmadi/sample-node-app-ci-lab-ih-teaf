@@ -18,7 +18,6 @@ spec:
       containers:
         - name: node-web
           image: docker.io/teaf/node-app:v1.0.0
-          imagePullPolicy: IfNotPresent
           ports:
             - name: http
               containerPort: 3000
