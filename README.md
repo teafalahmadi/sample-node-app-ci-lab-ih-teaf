@@ -18,50 +18,36 @@ The app is containerized, configured through a ConfigMap, and exposed both inter
 ---
 
 ## ⚙️ Deployment Steps
-
-### 1️⃣ Build & Push Image
 ```bash
+# 1️⃣ Build & Push Image
 docker build -t docker.io/teaf/node-app:v1.0.0 .
 docker push docker.io/teaf/node-app:v1.0.0
+```
 
-2️⃣ Apply Manifests
+---
+
+## 2️⃣ Apply Kubernetes Manifests
 kubectl apply -f ns.yaml
 kubectl apply -f config.yaml
 kubectl apply -f deploy.yaml
 kubectl apply -f svc-clusterip.yaml
 kubectl apply -f svc-loadbalancer.yaml
 
-3️⃣ Verify
+## 3️⃣ Verify Deployment
 kubectl -n node-challenge get all
 
+# ✅ You should see:
+# - 3 Pods running
+# - node-internal (ClusterIP)
+# - node-public (LoadBalancer with EXTERNAL-IP)
 
-You should see:
-
-3 pods running
-
-node-internal (ClusterIP)
-
-node-public (LoadBalancer with EXTERNAL-IP)
-
-🧪 Testing the App
-External Access
+## 4️⃣ Test the App
+# 🌐 External Access
 curl -I http://<EXTERNAL-IP>/health
 
-Internal Access
+## 🔒 Internal Access
 kubectl -n node-challenge run toolbox --image=busybox:1.36 -it -- sh
 wget -qO- http://node-internal.node-challenge.svc.cluster.local:3000/health
 
-🧹 Cleanup
+# 5️⃣ Cleanup
 kubectl delete ns node-challenge
-
-🧠 Key Points
-
-ConfigMap provides environment variables without changing code.
-
-Deployment manages scaling and rolling updates.
-
-ClusterIP = internal access only.
-
-LoadBalancer = public internet access.
-
-Everything is reproducible with simple kubectl apply commands.
