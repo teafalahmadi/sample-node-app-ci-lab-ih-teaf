@@ -47,10 +47,11 @@ kubectl -n node-challenge get all
 # 🌐 External Access
 curl -I http://<EXTERNAL-IP>/health
 ```
+```bash
 ## 🔒 Internal Access
 kubectl -n node-challenge run toolbox --image=busybox:1.36 -it -- sh
 wget -qO- http://node-internal.node-challenge.svc.cluster.local:3000/health
-
+```
 ```bash
 # 5️⃣ Cleanup
 kubectl delete ns node-challenge
