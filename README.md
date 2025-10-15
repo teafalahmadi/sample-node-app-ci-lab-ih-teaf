@@ -25,7 +25,7 @@ docker push docker.io/teaf/node-app:v1.0.0
 ```
 
 ---
-# 2️⃣ Apply Kubernetes Manifests
+2️⃣ Apply Kubernetes Manifests
 kubectl apply -f ns.yaml
 kubectl apply -f config.yaml
 kubectl apply -f deploy.yaml
