@@ -25,28 +25,33 @@ docker push docker.io/teaf/node-app:v1.0.0
 ```
 
 ```bash
-2️⃣ Apply Kubernetes Manifests
+# 2️⃣ Apply Kubernetes Manifests
 kubectl apply -f ns.yaml
 kubectl apply -f config.yaml
 kubectl apply -f deploy.yaml
 kubectl apply -f svc-clusterip.yaml
 kubectl apply -f svc-loadbalancer.yaml
 ```
+```bash
 # 3️⃣ Verify Deployment
 kubectl -n node-challenge get all
-
+```
+```bash
 # ✅ You should see:
  - 3 Pods running
  - node-internal (ClusterIP)
  - node-public (LoadBalancer with EXTERNAL-IP)
-
+```
+```bash
 # 4️⃣ Test the App
 # 🌐 External Access
 curl -I http://<EXTERNAL-IP>/health
-
+```
 ## 🔒 Internal Access
 kubectl -n node-challenge run toolbox --image=busybox:1.36 -it -- sh
 wget -qO- http://node-internal.node-challenge.svc.cluster.local:3000/health
 
+```bash
 # 5️⃣ Cleanup
 kubectl delete ns node-challenge
+```
