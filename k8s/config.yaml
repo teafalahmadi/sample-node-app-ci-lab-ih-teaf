@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: node-web-config
+data:
+  app_name: app
+  banner_text: "Node AKS challenge"
