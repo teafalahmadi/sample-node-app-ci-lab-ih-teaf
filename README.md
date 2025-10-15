@@ -24,14 +24,14 @@ docker build -t docker.io/teaf/node-app:v1.0.0 .
 docker push docker.io/teaf/node-app:v1.0.0
 ```
 
----
+```bash
 2️⃣ Apply Kubernetes Manifests
 kubectl apply -f ns.yaml
 kubectl apply -f config.yaml
 kubectl apply -f deploy.yaml
 kubectl apply -f svc-clusterip.yaml
 kubectl apply -f svc-loadbalancer.yaml
-
+```
 # 3️⃣ Verify Deployment
 kubectl -n node-challenge get all
 
